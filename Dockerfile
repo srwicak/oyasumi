@@ -49,7 +49,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 
 
 # Final stage for app image
-FROM base
+FROM base AS production
 
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
@@ -67,3 +67,13 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
 CMD ["./bin/thrust", "./bin/rails", "server"]
+
+# === Extra stage for DEVELOPMENT ===
+FROM build AS development
+ENV RAILS_ENV="development" \
+    BUNDLE_WITHOUT="" \
+    BUNDLE_PATH="/usr/local/bundle" 
+WORKDIR /rails
+
+EXPOSE 3000
+CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
