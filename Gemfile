@@ -45,5 +45,10 @@ group :development, :test do
 
   # Use RSpec for tests [https://rspec.info/]
   gem "rspec-rails", "~> 8.0"
-end
 
+  # Use Factory Bot for fixtures [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails", "~> 6.5"
+
+  # Use Faker for seed data [https://github.com/faker-ruby/faker]
+  gem "faker", "~> 3.5"
+end
