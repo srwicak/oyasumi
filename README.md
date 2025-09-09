@@ -63,12 +63,19 @@ docker-compose -f docker-compose.dev.yml exec api bundle exec rails console
 
 # Generate the OpenAPI JSON file
 docker-compose -f docker-compose.dev.yml run --rm api bash -lc "rake rswag:specs:swaggerize"
+
+# Running RSpec
+docker compose -f docker-compose.dev.yml run --rm -e RAILS_ENV=test api bash -lc "bin/rails db:create db:migrate && bundle exec rspec"
 ```
 
 ## 🌐 API Endpoints
 
 ### Health Check
 - `GET /up` - Application health status
+
+### API Documentation
+- `GET /api-docs` - Interactive Swagger UI documentation for exploring and testing API endpoints
+- `GET /api-docs/v1/swagger.yaml` - OpenAPI 3.0.1 specification file in YAML format
 
 ## 🔒 Environment Variables
 
