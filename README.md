@@ -59,7 +59,10 @@ docker-compose -f docker-compose.dev.yml down
 docker-compose -f docker-compose.dev.yml up --build
 
 # Access Rails console
-docker-compose -f docker-compose.dev.yml exec api rails console
+docker-compose -f docker-compose.dev.yml exec api bundle exec rails console
+
+# Generate the OpenAPI JSON file
+docker-compose -f docker-compose.dev.yml run --rm api bash -lc "rake rswag:specs:swaggerize"
 ```
 
 ## 🌐 API Endpoints
