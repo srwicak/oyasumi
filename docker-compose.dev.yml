@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: oyasumi
+      POSTGRES_PASSWORD: oyasumi
+      POSTGRES_DB: oyasumi_development
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oyasumi -d oyasumi_development"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    
+  redis:
+    image: redis:8
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  
+  api:
+    build:
+      context: .
+      target: development
+    env_file:
+      - ./docker/dev.env
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  db_data:
+  redis_data:

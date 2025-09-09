@@ -1,0 +1,7 @@
+RAILS_ENV=development
+POSTGRES_USER=<your-postgres-user - for example: oyasumi>
+POSTGRES_PASSWORD=<your-postgres-password - for example: oyasumi>
+POSTGRES_DB=<your-postgres-db - for example: oyasumi_development>
+POSTGRES_HOST=<your-postgres-db - for example: db>
+POSTGRES_PORT=<your-postgres-port - for example: 5432>
+REDIS_URL=<your-redis-url for example: redis://redis:6379/1>
