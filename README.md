@@ -36,6 +36,7 @@ Rails API application for sleep tracking.
 
 4.  **Access the application***
     - API: http://localhost:3000
+    - Documentation: http://localhost:3000/api-docs
     - Health check: http://localhost:3000/up
 
 ## 🔧 Development Commands
