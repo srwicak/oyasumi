@@ -51,4 +51,9 @@ group :development, :test do
 
   # Use Faker for seed data [https://github.com/faker-ruby/faker]
   gem "faker", "~> 3.5"
+
+  # Bullet helps to kill N+1 queries and unused eager loading [https://github.com/flyerhzm/bullet]
+  gem "bullet", "~> 8.0"
 end
+
+
