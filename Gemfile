@@ -62,5 +62,5 @@ group :development, :test do
   gem "faker", "~> 3.5"
 
   # Bullet helps to kill N+1 queries and unused eager loading [https://github.com/flyerhzm/bullet]
-  gem "bullet", "~> 8.0"
+  gem "bullet", "~> 8.1"
 end
