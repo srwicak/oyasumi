@@ -37,7 +37,7 @@ gem "thruster", require: false
 gem "jwt", "~> 3.1"
 
 # Use Pagy for pagination for more robust pagination [https://github.com/ddnexus/pagy]
-gem "pagy", "~> 9.4"
+gem "pagy", "~> 43.0"
 
 # Use Rswag to generate Swagger documentation and provide a Swagger UI [https://github.com/rswag/rswag]
 gem "rswag", "~> 2.16"
